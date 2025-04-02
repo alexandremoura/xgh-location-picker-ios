@@ -1,7 +1,7 @@
 # xgh_location_picker_ios
 
 A XGH Location Picker iOS is a plugin for flutter that use 
-cocoapods UMAAlertPicker LocationPicker component only for iOS.
+Apple Maps to change user location. It's only for iOS.
 
 ## Getting Started
 
