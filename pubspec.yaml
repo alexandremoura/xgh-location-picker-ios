@@ -1,8 +1,8 @@
 name: xgh_location_picker_ios
 description: "A XGH Location Picker iOS is a plugin for flutter that use 
 Apple Maps to change user location. It's only for iOS."
-version: 0.0.1
-homepage:
+version: 0.0.2
+homepage: https://github.com/alexandremoura/xgh-location-picker-ios#
 
 environment:
   sdk: ^3.6.0

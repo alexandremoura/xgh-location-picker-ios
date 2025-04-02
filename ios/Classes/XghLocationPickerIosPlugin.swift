@@ -3,8 +3,8 @@ import UIKit
 import Foundation
 import CoreLocation
 
-public class XghLocationPickerIosPlugin: NSObject, FlutterPlugin, LocationManagerDelegate {
-    var locationManager = LocationManager()
+public class XghLocationPickerIosPlugin: NSObject, FlutterPlugin {
+    
     var location: CLLocation?
 
     public static func register(with registrar: any FlutterPluginRegistrar) {
@@ -15,8 +15,6 @@ public class XghLocationPickerIosPlugin: NSObject, FlutterPlugin, LocationManage
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
-        case "getPlatformVersion":
-          result("iOS " + UIDevice.current.systemVersion)
           case "openLocationPicker":
           alterarLocalizacao(result: result)
         default:
@@ -25,8 +23,6 @@ public class XghLocationPickerIosPlugin: NSObject, FlutterPlugin, LocationManage
     }
 
     func alterarLocalizacao(result: @escaping FlutterResult) {
-        locationManager.delegate = self
-        locationManager.checkLocationPermission()
         var canExecute = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             canExecute = true
@@ -87,14 +83,5 @@ public class XghLocationPickerIosPlugin: NSObject, FlutterPlugin, LocationManage
                                                           constant: 0))
       }
   }
-
-    public func sendLocation(coordinate: CLLocationCoordinate2D?) {
-        if coordinate != nil {
-            guard let latitude = coordinate?.latitude else {return}
-            guard let longitude = coordinate?.longitude else { return }
-            location = CLLocation(latitude: latitude, longitude: longitude)
-
-        }
-    }
 }
 

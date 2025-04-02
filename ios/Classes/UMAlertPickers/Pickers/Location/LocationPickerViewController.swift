@@ -243,8 +243,11 @@ final class LocationPickerViewController: UIViewController {
 	}
 	
 	func showCoordinates(_ coordinate: CLLocationCoordinate2D, animated: Bool = true) {
-		let region = MKCoordinateRegion.init(center: coordinate, latitudinalMeters: resultRegionDistance, longitudinalMeters: resultRegionDistance)
-		mapView.setRegion(region, animated: animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            let region = MKCoordinateRegion.init(center: coordinate, latitudinalMeters: self.resultRegionDistance, longitudinalMeters: self.resultRegionDistance)
+            self.mapView.setRegion(region, animated: animated)
+        }
+		
 	}
 
     func selectLocation(location: CLLocation) {
